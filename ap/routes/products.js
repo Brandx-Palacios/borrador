@@ -21,6 +21,18 @@ router.post('/', (req, res) => {
     res.status(201).json(newProduct);
 });
 
+// GET /products/:id - Get product by id
+router.get('/:id', (req, res) => {
+    const product = products.find(p => p.id === parseInt(req.params.id));
+    if (!product) {
+        return res.status(404).json({ message: 'Product not found.' });
+    }
+    res.status(200).json(product);
+});
+
+
+
+
 /**
  * Were missing some routes here...
  */
